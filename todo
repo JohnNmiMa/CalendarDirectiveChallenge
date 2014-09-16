@@ -1,0 +1,8 @@
+Use a table to implement the calendar
+Check out the utility. Get the data into a list of arrays, where each array is a weeks worth of days
+Code up the table in index.html first
+Code up the selector menus
+Create a "calendar" directive with a controller
+- The controller will have a method to set the calendar month and yea.
+Create a "calender-month" directive, that inherits "calendar" directive controller
+Create unit tests for both directives

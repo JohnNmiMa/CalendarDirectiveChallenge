@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="calendarDemoApp">
+<head>
+    <title>Calendar Directive Challenge</title>
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+</head>
+<body ng-controller="CalendarCtrl">
+
+<!-- your code for nav and calendar directive instance here -->
+<table>
+    <thead>
+        <tr>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr></tr>
+        <tr ng-repeat="week in weeks">
+            <td ng-repeat="day in week">{{day.day}}</td>
+        </tr>
+    </tbody>
+</table>
+
+    <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="./utilities/calendar-range/calendarRange.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
+</body>
+</html>
