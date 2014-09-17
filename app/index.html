@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html ng-app="calendarDemoApp">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar Directive Challenge</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel='stylesheet' href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./main.css" />
 </head>
 <body ng-controller="CalendarCtrl">
 
-<!-- your code for nav and calendar directive instance here -->
-<table>
-    <thead>
-        <tr>
-            <th>Sunday</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr></tr>
-        <tr ng-repeat="week in weeks">
-            <td ng-repeat="day in week">{{day.day}}</td>
-        </tr>
-    </tbody>
-</table>
+    <!-- your code for nav and calendar directive instance here -->
+    <div class="container">
+        <table compute-days>
+            <thead>
+                <tr>
+                    <th ng-repeat="day in days">{{day}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+                <tr ng-repeat="week in weeks">
+                    <td ng-repeat="day in week" ng-class="{notInMonth:isDayNotInMonth(day), isToday:isDayToday(day)}">{{day.day}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="./utilities/calendar-range/calendarRange.js"></script>
     <script type="text/javascript" src="./app.js"></script>
 </body>

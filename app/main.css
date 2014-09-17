@@ -1,1 +1,28 @@
-/* your css code goes here */
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #cecfd5;
+    padding: 5px;
+    width:14.2%;
+}
+th {
+    height:30px;
+    text-align: center;
+}
+td { height:100px; }
+    td.notInMonth {
+        background-color: #eee;
+    }
+    td.isToday {
+        color:#f00;
+    }
