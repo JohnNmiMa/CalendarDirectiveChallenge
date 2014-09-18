@@ -1,0 +1,11 @@
+<form name="monthYearForm" class="monthYearForm">
+    <select name="month" ng-model="data.month" class="btn"
+            ng-options="month for month in months">
+        <option value="">{{data.month}}</option>
+    </select>
+    <select name="year" ng-model="data.year" class="btn"
+            ng-options="year for year in data.years">
+        <option value="">{{data.year}}</option>
+    </select>
+    <button type="button" class="btn btn-default" ng-click="setToday()">Today</button>
+</form>

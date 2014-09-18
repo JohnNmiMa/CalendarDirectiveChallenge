@@ -8,23 +8,14 @@
     <link rel='stylesheet' href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./main.css" />
 </head>
-<body ng-controller="CalendarCtrl">
+<!--<body ng-controller="CalendarCtrl">-->
+<body>
 
     <!-- your code for nav and calendar directive instance here -->
-    <div class="container">
-        <table compute-days>
-            <thead>
-                <tr>
-                    <th ng-repeat="day in days">{{day}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr></tr>
-                <tr ng-repeat="week in weeks">
-                    <td ng-repeat="day in week" ng-class="{notInMonth:isDayNotInMonth(day), isToday:isDayToday(day)}">{{day.day}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container-fluid">
+        <calendar>
+            <div date-picker></div>
+        </calendar>
     </div>
 
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>

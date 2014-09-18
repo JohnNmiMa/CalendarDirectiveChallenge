@@ -1,10 +1,11 @@
 Use a table to implement the calendar - DONE
 - Code up the table in index.html first - DONE
-Check out the utility. Get the data into a list of arrays, where each array is a weeks worth of days
+Check out the utility. Get the data into a list of arrays, where each array is a weeks worth of days - DONE
 - Get each date printed out in a table - DONE
-- Get each day not in the current month styled differently
-Code up the selector menus
-Create a "calendar" directive with a controller
-- The controller will have a method to set the calendar month and year.
-Create a "calender-month" directive, that inherits "calendar" directive controller
+- Get each day not in the current month styled differently - DONE
+Code up the selector menus - DONE
+Create a "calendar" directive with a controller - DONE
+- The controller will have a $watch setup to set the calendar month and year
+  when the month or year <select> is selected. - DONE
+Create a "calender-month" directive, that inherits "calendar" directive controller - DONE
 Create unit tests for both directives

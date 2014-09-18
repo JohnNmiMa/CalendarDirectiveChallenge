@@ -1,0 +1,15 @@
+<div ng-transclude></div>
+<table>
+    <thead compute-days>
+        <tr>
+            <th ng-repeat="day in days">{{day}}</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr ng-repeat="week in weeks">
+                <td sizeit ng-repeat="day in week" ng-class="{notInMonth:isDayNotInMonth(day)}">
+                    <div class="datenum" ng-class="{isToday:isToday(day)}">{{day.day}}</div>
+                </td>
+        </tr>
+    </tbody>
+</table>
