@@ -9,9 +9,11 @@
 .monthYearForm {
     padding:3px;
     background-color: #000;
+    height:38px;
 }
     .monthYearForm select {
         max-height:100px;
+        height:32px;
     }
     select {
         background-color: #fff !important;
@@ -22,7 +24,7 @@
             outline:0 !important;
         }
     button {
-        height:21px;
+        height:32px;
         padding:0 12px !important;
         line-height: 21px;
         border-color:transparent !important;
