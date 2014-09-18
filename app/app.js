@@ -23,9 +23,9 @@ angular.module('calendarDemoApp', [])
                 }
             }
 
-            $scope.isDayNotInMonth = function(day) {
+            $scope.isDayInMonth = function(day) {
                 if (day.date < firstDayInMonth || day.date > lastDayInMonth) {
-                    return true;
+                    return false;
                 }
             };
 
