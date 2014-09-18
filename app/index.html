@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="calendarDemoApp">
+<html ng-app="calendarApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
@@ -12,8 +12,10 @@
 
     <!-- your code for nav and calendar directive instance here -->
     <div class="container-fluid">
+        <!--<calendar initial-date="November 1, 2014">-->
         <calendar>
-            <div date-picker></div>
+            <!--<div date-picker initial-date="November 1, 2014"></div>-->
+            <div date-picker initial-date="today"></div>
         </calendar>
     </div>
 

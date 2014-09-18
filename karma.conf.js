@@ -15,8 +15,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'app/*.js',
-      'app/*.html'
+        'app/bower_components/jquery/dist/jquery.min.js',
+        'app/bower_components/bootstrap/dist/js/bootstrap.min.js',
+        'app/bower_components/angular/angular.min.js',
+        'app/bower_components/angular-mocks/angular-mocks.js',
+        'app/utilities/calendar-range/calendarRange.js',
+        'app/*.js',  // this will pick up both spec and app
+        'app/*.html' // for our directive partial template
     ],
 
 
@@ -28,6 +33,12 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'app/*.html': 'html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+        // strip app from the file path
+        stripPrefix: 'app/'
     },
 
 
@@ -61,6 +72,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: true
   });
 };

@@ -1,4 +1,4 @@
-angular.module('calendarDemoApp', [])
+angular.module('calendarApp', [])
 
 // The 'calendar' element directive will build a calendar. Upon startup, the
 // calendar will display the current month. The 'populateWeeks' function
@@ -30,8 +30,9 @@ angular.module('calendarDemoApp', [])
             };
 
             this.populateWeeks = function(date) {
-                var calendarData = CalendarRange.getMonthlyRange(date);
-                numWeeks = calendarData.days.length / 7,
+                var daysInWeek = 7,
+                    calendarData = CalendarRange.getMonthlyRange(date),
+                    numWeeks = calendarData.days.length / daysInWeek,
                     week = [];
 
                 firstDayInMonth = calendarData.start;
@@ -40,7 +41,7 @@ angular.module('calendarDemoApp', [])
                 $scope.weeks = [];
                 for (var i=0, day = 0; i<numWeeks; i+=1) {
                     week = [];
-                    for (var j=0; j<7; j+=1, day+=1) {
+                    for (var j=0; j < daysInWeek; j+=1, day+=1) {
                         week.push(calendarData.days[day]);
                     }
                     $scope.weeks.push(week);
@@ -48,8 +49,19 @@ angular.module('calendarDemoApp', [])
             }
         },
         link: function($scope, element, attrs, calendarController) {
-            var initialDate = new Date();
-            calendarController.populateWeeks(initialDate);
+            var date,
+                initialDate = attrs.initialDate;
+
+            if (initialDate == "today" ||
+                initialDate == "") {
+                date=new Date();
+                calendarController.populateWeeks(date);
+            } else if (initialDate == undefined) {
+                // Don't populate the calendar if there is no initialDate
+            } else {
+                date = new Date(initialDate);
+                calendarController.populateWeeks(date);
+            }
         }
     }
 })
@@ -57,32 +69,41 @@ angular.module('calendarDemoApp', [])
 // The 'datePicker' attribute directive is used to let the user
 // select a calendar's month and year.
 .directive('datePicker', function() {
-    return {
+    var directiveDefinitionObject = {
         require: '?^calendar',
         restrict: 'A',
         templateUrl: 'datePickerTemplate.html',
         link: function(scope, element, attrs, calendarController) {
-            scope.data = {};
+            var initialDate = attrs.initialDate;
 
+            scope.data = {};
             function init() {
-                var today = new Date(),
-                    year = today.getFullYear(), startYear = year - 100, endYear = year + 20;
+                var date, year;
+
+                if (initialDate == "today" ||
+                    initialDate == ""      ||
+                    initialDate == undefined) {
+                    date = new Date();
+                } else {
+                    date = new Date(initialDate);
+                }
+                year = date.getFullYear(), startYear = year - 100, endYear = year + 20;
 
                 scope.months = ['January','February','March','April','May','June',
                                 'July','August','September','October','November','December'];
-                scope.data.month = scope.months[today.getMonth()];
+                scope.data.month = scope.months[date.getMonth()];
                 scope.data.year = year;
                 scope.data.years = [];
-                for (var i = startYear; i<=endYear; i+=1) {
+                for (var i = startYear; i <= endYear; i += 1) {
                     scope.data.years.push(i);
                 }
             }
 
             scope.setToday = function() {
                 var today = new Date();
-                calendarController.populateWeeks(today);
                 scope.data.year = today.getFullYear();
                 scope.data.month = scope.months[today.getMonth()];
+                calendarController.populateWeeks(today);
             };
 
             scope.$watch('data.year', function(year) {
@@ -99,21 +120,23 @@ angular.module('calendarDemoApp', [])
             init();
         }
     }
+    return directiveDefinitionObject;
 })
 
 // The 'sizeit' attribute directive will attempt to keep the
 // td cell height at 75% of its width. This helps keep the
-// calendar propotional in size.
+// calendar proportional in size.
 .directive('sizeit', function() {
     return {
         link: function($scope, element, attrs) {
+            $scope.heightPct = 75;
             $(window).on('resize', function() {
                 $scope.$apply(function () {
                     computeDayCellHeight();
                 })
             });
             function computeDayCellHeight() {
-                element.height(element.width() * 0.75);
+                element.height(element.width() * $scope.heightPct/100);
             }
             computeDayCellHeight();
         }
