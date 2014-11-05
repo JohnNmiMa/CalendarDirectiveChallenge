@@ -6,8 +6,8 @@
         </tr>
     </thead>
     <tbody>
-            <tr ng-repeat="week in weeks">
-                <td sizeit ng-repeat="day in week" ng-class="{notInMonth:isDayInMonth(day) == false}">
+        <tr ng-repeat="week in weeks">
+                <td sizeit sizeit-height="75%" ng-repeat="day in week" ng-class="{notInMonth:isDayInMonth(day) == false}">
                     <div class="datenum" ng-class="{isToday:isToday(day)}">{{day.day}}</div>
                 </td>
         </tr>

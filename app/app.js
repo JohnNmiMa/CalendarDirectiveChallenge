@@ -129,7 +129,7 @@ angular.module('calendarApp', [])
 .directive('sizeit', function() {
     return {
         link: function($scope, element, attrs) {
-            $scope.heightPct = 75;
+            $scope.heightPct = parseFloat(attrs.sizeitHeight);
             $(window).on('resize', function() {
                 $scope.$apply(function () {
                     computeDayCellHeight();
